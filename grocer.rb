@@ -32,12 +32,12 @@ def apply_coupons(cart, coupons)
   
   cart.each do |item, attribute|
     if item == coupons[:item]
-      count = attribute[:count] / coupons[:num]
+      count = attribute[:count].to_i / coupons[:num].to_i
       if count >= 1
         hash["#{item} W/COUPON"] = 
           {:price => coupons[:cost], :clearance => attribute[:clearance], :count => count}
         
-        remainder = attribute[:count] % coupons[:num]
+        remainder = attribute[:count].to_i % coupons[:num].to_i
         hash[item] = {:price => attribute[:price], :clearance => attribute[:clearance], :count => remainder}
       end
     else
