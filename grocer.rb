@@ -2,7 +2,12 @@ def consolidate_cart(cart)
   hash = {}
   
   cart.each do |item|
-    item.each do |name, attribute|
+    item.each do |name, data|
+      data.each do |attribute, value|
+        hash[name][attribute] = value
+      end
+    end
+  end
     
 end
 
