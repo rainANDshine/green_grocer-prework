@@ -33,7 +33,7 @@ def apply_coupons(cart, coupons)
   cart.each do |item, attribute|
     coupons.each do |coupon_attribute|
       if item == coupon_attribute[:item]
-        count = attribute[:count] / coupon_attribute[:num]
+        count = (attribute[:count] / coupon_attribute[:num]).floor
         if count >= 1
         hash["#{item} W/COUPON"] = 
           {:price => coupon_attribute[:cost], :clearance => attribute[:clearance], :count => count}
