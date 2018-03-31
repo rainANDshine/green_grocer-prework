@@ -36,8 +36,7 @@ def apply_coupons(cart, coupons)
         if item == coupon_attribute[:item]
           count = attribute[:count] / coupon_attribute[:num]
           if count >= 1
-          hash["#{item} W/COUPON"] = 
-            {:price => coupon_attribute[:cost], :clearance => attribute[:clearance], :count => count}
+          hash["#{item} W/COUPON"] = {:price => coupon_attribute[:cost], :clearance => attribute[:clearance], :count => count}
         
           remainder = attribute[:count] % coupon_attribute[:num]
           hash[item] = {:price => attribute[:price], :clearance => attribute[:clearance], :count => remainder}
@@ -55,7 +54,16 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
+  hash = {}
   
+  cart.each do |item, attribute|
+    if attribute[:clearance] == true
+      hash[item] = {[:price] => attribute[:price] * 0.8, [:clearance] => attribute[:clearance], [:count] => attribute[:count]}
+    else
+      hash[item] = attribute
+    end
+    
+    hash
 end
 
 def checkout(cart, coupons)
