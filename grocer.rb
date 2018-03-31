@@ -62,6 +62,7 @@ def apply_clearance(cart)
     else
       hash[item] = attribute
     end
+  end
     
     hash
 end
