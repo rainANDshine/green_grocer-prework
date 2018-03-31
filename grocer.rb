@@ -64,7 +64,7 @@ def apply_clearance(cart)
     end
   end
     
-    hash
+  hash
 end
 
 def checkout(cart, coupons)
