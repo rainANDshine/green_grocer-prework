@@ -58,7 +58,7 @@ def apply_clearance(cart)
   
   cart.each do |item, attribute|
     if attribute[:clearance] == true
-      hash[item] = {[:price] => (attribute[:price]*0.8).round(2), [:clearance] => attribute[:clearance], [:count] => attribute[:count]}
+      hash[item] = {[:price] => (attribute[:price]*0.8), [:clearance] => attribute[:clearance], [:count] => attribute[:count]}
     else
       hash[item] = attribute
     end
